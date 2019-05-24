@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>Pagina Teste</title>	
+		<link href='https://fonts.googleapis.com/css?family=Titillium+Web&display=swap' rel='stylesheet'>
+		<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js'></script>
+		<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+		<script>
+
+			var largura_tela = screen.width;
+			var altura_tela = screen.height;
+
+			function abrir_janela(tipo_jus){
+
+				// RID=12 - BID=61
+				/*
+				http://<SEU SERVIDOR>/BOE/OpenDocument/opendoc/openDocument.jsp
+				?sIDType=CUID
+				&iDocID=AUSsTFo0dUpEjuEy5EgNhrs
+				&mode=part
+				&sRefresh=Y - Atualiza o Relatório quaando aberto
+				&lsSnome_prompt=valor - Metodo para imputar filtros
+				&sReportPart=UIREF:RID=46:BID=137
+				*/
+				var width = 1100;
+				var height = 500;
+				var top = ((altura_tela/2) - (height/2));
+				var left = ((largura_tela/2) - (width/2))
+				var link_bo = 'http://WIN-QRDHPIHS6EA:8080/BOE/OpenDocument/opendoc/openDocument.jsp?sIDType=CUID&iDocID=Aar.Zi_pDTdNnpc9mFreQ24&mode=part&sRefresh=Y&lsStipojus='+tipo_jus+'&sReportPart=UIREF:RID=12:BID=61'
+
+				window.open( 
+					link_bo ,
+					'OpenDocument',
+					'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=no, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+
+
+			}
+
+			
+			$(document).ready(function(){
+				var tela_larg = $('.lightbox').width();
+				var tela_alt = $('.lightbox').height();
+				var metade_larg = tela_larg/2;
+				var metade_alt = tela_alt/2
+				var conteudo_centro_larg = metade_larg - 250;
+				var conteudo_centro_alt = metade_alt - 250;
+				
+
+				$('#link').click(function(){
+
+
+					$('.lightbox').animate({
+
+						'left' : '0'
+
+
+					}, 1000, function(){
+
+						$('.conteudo').animate({
+
+						
+						'left' : conteudo_centro_larg+'px' }, 500);
+
+						$('.conteudo').draggable();
+
+
+
+					});
+
+
+
+				});
+
+
+				$('.lightbox').click(function(){
+					
+
+
+					$('.conteudo').animate({
+
+						'left' : '-500px',
+						'top' : conteudo_centro_alt+'px'
+
+
+					}, 1000, function(){
+
+						$('.lightbox').animate({
+
+						
+						'left' : '-100%' }, 500);
+
+
+
+					});
+
+
+				});
+
+
+
+
+			});
+
+			
+
+
+			
+			
+
+
+		</script>
+
+
+		<style>
+
+		* {
+			font-family: Titillium Web, sans-serif;	
+			color:#000;
+			font-size:18px;
+		}	
+
+		body{
+			background:url('https://media.idownloadblog.com/wp-content/uploads/2018/01/Abstract-ART-for-ALL-iPhone-AR72014.png');
+			background-size: cover;
+			background-position: center;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 20px;
+			overflow: hidden;
+		}
+		.formatacao {
+			background:rgba(255,255,255,0.4);
+			border-radius: 10px;
+			box-shadow: 0px 0px 10px 2px rgba(0,0,0,0.3);
+		}
+
+		.cabecalho {
+			width:100%;
+			height:100px;
+			text-align:center;
+		}
+
+		.cabecalho p {
+			font-size:45px;
+			font-weight: bold;
+			position: relative;
+			top:10px;
+		}
+
+		.corpo {
+			text-align: justify;
+			margin-top: 20px;
+			padding: 10px;
+			height:4000px;
+		}
+
+		.div01 {
+			width:50%;
+			position: absolute;
+			left:calc(50% - 25%);
+			text-align: center;
+		}
+
+		.logo{
+			width:80px;
+			height:80px;
+			position: absolute;
+			left:-250px;
+			top:-263px;
+		}
+
+		#link {
+			width:150px;
+		}
+		.lightbox {
+			position: absolute;
+			left:-100%;
+			top:0;
+			width:100%;
+			height:100%;
+			background:rgba(0,0,0,0.6);
+			display:block;
+
+		}
+		.conteudo {
+			background: rgba(2,2,2,0.7);
+			width:500px;
+			height:500px;
+			position: absolute;
+			left:calc(-50% - 250px);
+			top:calc(50% - 250px);
+			border-radius: 7px;
+			box-shadow: 0px 0px 10px 2px rgba(255,255,255,0.2);
+			display:block;
+			text-align: center;
+
+		}
+		.conteudo a{
+			color:#fff;
+			font-size: 25px;
+			text-decoration: none;
+			text-transform: uppercase;
+		}
+		.conteudo h2{
+			color:red;
+			font-size: 25px;
+			text-decoration: none;
+		}
+
+
+
+
+
+
+		</style>
+
+	</head>
+
+	<body>
+		
+		<div class='cabecalho formatacao'>
+			<p>Texto de exemplo!</p>
+		</div> 
+		<div class='corpo formatacao'>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pretium, felis pulvinar aliquet porta, ligula mi finibus dui, id faucibus mi diam et felis. Cras eget dui lacus. Aliquam erat volutpat. Mauris ullamcorper urna vel lacus sodales porttitor. Cras enim elit, sollicitudin aliquam rutrum sit amet, ornare non nibh. Curabitur condimentum erat nunc, in efficitur ante vehicula eget. Suspendisse potenti. Donec interdum, dolor at porttitor facilisis, felis mi lacinia elit, a condimentum metus ante in eros. Integer faucibus quam ligula, et efficitur orci sollicitudin non. Fusce tincidunt laoreet euismod. Nam at dictum sem, quis dapibus tellus. Donec porta elementum blandit. In non euismod dui. Quisque sit amet nibh vitae nisi aliquam venenatis in eu ante.</p>
+
+			<div class='div01 formatacao'>
+				
+				<p>Outro texto de teste!</p>
+
+				<a href='#' id='link'>
+					<img src='https://img.icons8.com/office/480/000000/facebook.png' class='logo'>
+					<br>
+					<p>Teste</p>
+				</a>
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+		<div class='lightbox' id="idLightbox">
+		</div>
+		<div class='conteudo' id='infos'>
+			<h2>Escolha o Tipo de Justiça que Deseja Análisar:</h2><br>
+			<a href='javascript:abrir_janela(9)' id='opendocument'>justiça trabalhista</a><br>
+			<a href='javascript:abrir_janela(1)' id='opendocument'>justiça federal</a><br>
+			<a href='javascript:abrir_janela(2)' id='opendocument'>justiça comum</a><br>
+
+		</div>
+
+
+	</body>
+
+</html>
